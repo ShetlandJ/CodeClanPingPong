@@ -68,6 +68,17 @@ public class Player {
         return pointsConceded;
     }
 
+    public int calculateScoreDifference(){
+        return pointsScored - pointsConceded;
+    }
+
+    public int progressByPercentage(){
+        double calc = (winCount * 100) / (winCount + lossCount);
+        double percentage = calc;
+        int myInt = (int) (percentage * 1);
+        return myInt;
+    }
+
     public static Player load(DBHelper dbHelper, String name){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String where = " WHERE name=?";

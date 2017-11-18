@@ -24,8 +24,9 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
         <activity android:name=".GameActivity" />
-        <activity android:name=".GameOverActivity"></activity>
+        <activity android:name=".GameOverActivity" />
         <activity android:name=".AndroidDatabaseManager" />
+        <activity android:name=".StatisticsActivity"></activity>
     </application>
 
 </manifest>
