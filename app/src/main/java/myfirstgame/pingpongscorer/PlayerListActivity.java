@@ -30,7 +30,7 @@ public class PlayerListActivity extends AppCompatActivity implements AdapterView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_list);
-        
+
 
         DBHelper dbHelper = new DBHelper(this);
         ArrayList<Player> playerList = Player.all(dbHelper);

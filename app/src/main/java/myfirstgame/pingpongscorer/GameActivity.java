@@ -58,11 +58,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void checkWin() {
-        if (playerOneScoreNumber == 11 && playerTwoScoreNumber < 10) {
+        if (playerOneScoreNumber >= 11 && playerOneScoreNumber - playerTwoScoreNumber >= 2) {
             Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
-        } else if (playerTwoScoreNumber == 11 && playerOneScoreNumber < 10) {
+        } else if (playerTwoScoreNumber >= 11 && playerTwoScoreNumber - playerOneScoreNumber >= 2) {
             Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_SHORT).show();
-
         }
     }
 }

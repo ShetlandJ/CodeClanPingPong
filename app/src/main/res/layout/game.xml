@@ -6,59 +6,61 @@
     android:layout_height="match_parent"
     tools:context="myfirstgame.pingpongscorer.GameActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="0dip"
-        android:layout_height="200dp"
+        android:layout_height="230dp"
         android:layout_weight=".5"
-        android:background="@drawable/playeronescoreboard">
-
-        <TextView
-            android:id="@+id/playerOneGameName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_weight="0.5"
-            android:text="TextView"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.055"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:background="@drawable/playeronescoreboard"
+        android:onClick="onClick">
 
         <TextView
             android:id="@+id/playerOneScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="0.5"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:gravity="center"
+            android:textColor="@android:color/background_light"
             android:textSize="90sp"
-            app:layout_constraintBottom_toTopOf="@+id/playerTwoGameName"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/playerOneGameName"
             app:layout_constraintVertical_bias="0.891"
             tools:text="0" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/playerOneGameName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="name" />
+
+    </RelativeLayout>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="0dip"
-        android:layout_height="200dp"
+        android:layout_height="230dp"
         android:layout_weight=".5"
-        android:background="@drawable/playertwoscoreboard">
+        android:background="@drawable/playertwoscoreboard"
+        android:onClick="onClick2">
 
         <TextView
             android:id="@+id/playerTwoScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:gravity="center"
-            android:onClick="onClick2"
+            android:textColor="@android:color/background_light"
             android:textSize="90sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteY="2dp"
             tools:text="0" />
@@ -67,16 +69,14 @@
             android:id="@+id/playerTwoGameName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_weight="0.5"
-            android:text="TextView"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="name"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>
