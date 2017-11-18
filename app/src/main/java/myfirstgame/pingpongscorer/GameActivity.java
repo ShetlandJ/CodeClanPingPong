@@ -1,5 +1,6 @@
 package myfirstgame.pingpongscorer;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,6 +46,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         playerOneScoreNumber++;
         playerOneScore.setText(playerOneScoreNumber.toString());
         checkWin();
+        playerOneWins();
     }
 
     public void onClick2(View arg0) {
@@ -57,11 +59,34 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public void onPointerCaptureChanged(boolean hasCapture) {
     }
 
-    public void checkWin() {
+    public boolean checkWin() {
         if (playerOneScoreNumber >= 11 && playerOneScoreNumber - playerTwoScoreNumber >= 2) {
-            Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
+            return true;
         } else if (playerTwoScoreNumber >= 11 && playerTwoScoreNumber - playerOneScoreNumber >= 2) {
-            Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
+    }
+
+    public void playerOneWins(){
+        if (checkWin()) {
+            Intent i = new Intent(this, GameOverActivity.class);
+            i.putExtra("winName", getIntent().getStringExtra("playerOneName"));
+            i.putExtra("lossName", getIntent().getStringExtra("playerTwoName"));
+            i.putExtra("winScore", playerOneScoreNumber.toString());
+            i.putExtra("lossScore", playerTwoScoreNumber.toString());
+            startActivity(i);
+        }
+    }
+
+    public void playerTwoWins(){
+        if (checkWin()) {
+            Intent i = new Intent(this, GameOverActivity.class);
+            i.putExtra("winName", getIntent().getStringExtra("playerTwoName"));
+            i.putExtra("lossName", getIntent().getStringExtra("playerOneName"));
+            i.putExtra("winScore", playerOneScoreNumber.toString());
+            i.putExtra("lossScore", playerTwoScoreNumber.toString());
+            startActivity(i);
         }
     }
 }

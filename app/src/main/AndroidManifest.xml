@@ -9,23 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PlayerListActivity"
-            android:screenOrientation="landscape"
+        <activity
+            android:name=".PlayerListActivity"
             android:configChanges="orientation|keyboardHidden"
-            >
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddPlayerActivity"
-            android:screenOrientation="landscape"
+        <activity
+            android:name=".AddPlayerActivity"
             android:configChanges="orientation|keyboardHidden"
-            />
-        <activity android:name=".GameActivity"></activity>
+            android:screenOrientation="landscape" />
+        <activity android:name=".GameActivity" />
+        <activity android:name=".GameOverActivity"></activity>
     </application>
 
 </manifest>
