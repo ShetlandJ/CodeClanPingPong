@@ -31,42 +31,38 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         playerOneScoreNumber = 0;
         playerTwoScoreNumber = 0;
 
-
         playerOneScore = findViewById(R.id.playerOneScore);
         playerOneScore.setText("0");
         playerOneScore.setOnClickListener(this);
 
-
         playerTwoScore = findViewById(R.id.playerTwoScore);
         playerTwoScore.setText("0");
         playerOneScore.setOnClickListener(this);
-
 
     }
 
     public void onClick(View arg0) {
         playerOneScoreNumber++;
         playerOneScore.setText(playerOneScoreNumber.toString());
-        if (playerOneScoreNumber == 11) {
-            Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
-        }
+        checkWin();
     }
+
     public void onClick2(View arg0) {
         playerTwoScoreNumber++;
         playerTwoScore.setText(playerTwoScoreNumber.toString());
-        if (playerTwoScoreNumber == 11) {
-            Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_SHORT).show();
-        }
+        checkWin();
     }
-
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
     }
 
     public void checkWin() {
-        if (playerOneScoreNumber == 11 && playerOneScoreNumber < 10) {
+        if (playerOneScoreNumber == 11 && playerTwoScoreNumber < 10) {
             Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
+        } else if (playerTwoScoreNumber == 11 && playerOneScoreNumber < 10) {
+            Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_SHORT).show();
+
         }
     }
 }
