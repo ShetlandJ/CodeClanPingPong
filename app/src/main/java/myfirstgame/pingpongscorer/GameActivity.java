@@ -16,10 +16,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     Integer playerOneScoreNumber;
     Integer playerTwoScoreNumber;
 
+    Game game;
+    DBHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
+
+        dbHelper = new DBHelper(this);
 
         playerOneName = findViewById(R.id.playerOneGameName);
         String playerOne = getIntent().getStringExtra("playerOneName");
@@ -46,6 +51,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         playerOneScoreNumber++;
         playerOneScore.setText(playerOneScoreNumber.toString());
         checkWin();
+
         playerOneWins();
     }
 
@@ -53,6 +59,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         playerTwoScoreNumber++;
         playerTwoScore.setText(playerTwoScoreNumber.toString());
         checkWin();
+        playerTwoWins();
     }
 
     @Override
@@ -68,26 +75,37 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    public void playerOneWins(){
+    public void playerOneWins() {
         if (checkWin()) {
             Intent i = new Intent(this, GameOverActivity.class);
             i.putExtra("winName", getIntent().getStringExtra("playerOneName"));
             i.putExtra("lossName", getIntent().getStringExtra("playerTwoName"));
             i.putExtra("winScore", playerOneScoreNumber.toString());
             i.putExtra("lossScore", playerTwoScoreNumber.toString());
+            saveGame();
             startActivity(i);
         }
     }
 
-    public void playerTwoWins(){
+    public void playerTwoWins() {
         if (checkWin()) {
             Intent i = new Intent(this, GameOverActivity.class);
             i.putExtra("winName", getIntent().getStringExtra("playerTwoName"));
             i.putExtra("lossName", getIntent().getStringExtra("playerOneName"));
-            i.putExtra("winScore", playerOneScoreNumber.toString());
-            i.putExtra("lossScore", playerTwoScoreNumber.toString());
+            i.putExtra("winScore", playerTwoScoreNumber.toString());
+            i.putExtra("lossScore", playerOneScoreNumber.toString());
+            saveGame();
             startActivity(i);
         }
+    }
+
+    public void saveGame() {
+        String p1name = getIntent().getStringExtra("playerOneName");
+        String p2name = getIntent().getStringExtra("playerTwoName");
+        Player playerOne = Player.load(dbHelper, p1name);
+        Player playerTwo = Player.load(dbHelper, p2name);
+        game = new Game(playerOne.getId(), playerTwo.getId(), playerOneScoreNumber, playerTwoScoreNumber);
+        game.save(dbHelper);
     }
 }
 

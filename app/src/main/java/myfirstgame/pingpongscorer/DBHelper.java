@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "test6.db";
+    public static final String DATABASE_NAME = "test7.db";
 
     //    Players table
     public static final String PLAYER_TABLE_NAME = "players";
@@ -43,7 +43,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db){
         setForeignKeyConstraintsEnabled(db);
 
+
         db.execSQL("CREATE TABLE " + PLAYER_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, wins INTEGER, losses INTEGER, points_scored INTEGER, points_conceded INTEGER )");
+        db.execSQL("CREATE TABLE " + GAME_TABLE_NAME + "("
+                + GAME_COLUMN_ID + " INTEGER primary key autoincrement NOT NULL, "
+                + GAME_COLUMN_PLAYER_ONE + " INTEGER REFERENCES " + PLAYER_TABLE_NAME + "(" + PLAYER_COLUMN_ID + ") ON DELETE CASCADE, "
+                + GAME_COLUMN_PLAYER_TWO + " INTEGER REFERENCES " + PLAYER_TABLE_NAME + "(" + PLAYER_COLUMN_ID + ") ON DELETE CASCADE, "
+                + GAME_COLUMN_PLAYER_ONE_SCORE + " INTEGER, "
+                + GAME_COLUMN_PLAYER_TWO_SCORE + " INTEGER);");
 
         db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('James S', 0, 0, 0, 0 );");
         db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('Peter M', 0, 0, 0, 0 );");

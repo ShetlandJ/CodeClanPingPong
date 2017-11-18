@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
@@ -81,6 +82,17 @@ public class PlayerListActivity extends AppCompatActivity implements AdapterView
 
         playerOneSpinner.setOnItemSelectedListener(new MySpinnerSelectedListener());
         playerTwoSpinner.setOnItemSelectedListener(new MySpinnerSelectedListener());
+
+        Button button = findViewById(R.id.dbBtn);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent dbmanager = new Intent(v.getContext(),AndroidDatabaseManager.class);
+                startActivity(dbmanager);
+            }
+        });
+
 
     }
 

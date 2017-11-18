@@ -77,7 +77,6 @@ public class Player {
         Player player = null;
         while (cursor.moveToNext()) {
 
-
             Integer id = cursor.getInt(cursor.getColumnIndex(PLAYER_COLUMN_ID));
             String playerName = cursor.getString(cursor.getColumnIndex(PLAYER_COLUMN_NAME));
             Integer numberOfWins = cursor.getInt(cursor.getColumnIndex(PLAYER_COLUMN_WINS));

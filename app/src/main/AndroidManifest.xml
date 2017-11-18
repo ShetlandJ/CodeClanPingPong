@@ -25,6 +25,7 @@
             android:screenOrientation="landscape" />
         <activity android:name=".GameActivity" />
         <activity android:name=".GameOverActivity"></activity>
+        <activity android:name=".AndroidDatabaseManager" />
     </application>
 
 </manifest>
