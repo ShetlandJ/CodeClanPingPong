@@ -77,6 +77,28 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     public void playerOneWins() {
         if (checkWin()) {
+            String winnerName = getIntent().getStringExtra("playerOneName");
+            String loserName = getIntent().getStringExtra("playerTwoName");
+
+            Player winner = Player.load(dbHelper, winnerName);
+            Player loser = Player.load(dbHelper, loserName);
+
+            winner.setWinCount(1);
+            loser.setLossCount(1);
+
+            winner.setPointsScored(playerOneScoreNumber);
+            loser.setPointsScored(playerTwoScoreNumber);
+
+            winner.setPointsConceded(playerTwoScoreNumber);
+            loser.setPointsConceded(playerOneScoreNumber);
+
+            winner.winPercentage();
+            loser.winPercentage();
+
+            winner.update(dbHelper);
+            loser.update(dbHelper);
+
+
             Intent i = new Intent(this, GameOverActivity.class);
             i.putExtra("winName", getIntent().getStringExtra("playerOneName"));
             i.putExtra("lossName", getIntent().getStringExtra("playerTwoName"));
@@ -89,6 +111,28 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     public void playerTwoWins() {
         if (checkWin()) {
+            String winnerName = getIntent().getStringExtra("playerTwoName");
+            String loserName = getIntent().getStringExtra("playerOneName");
+
+            Player winner = Player.load(dbHelper, winnerName);
+            Player loser = Player.load(dbHelper, loserName);
+
+            winner.setWinCount(1);
+            loser.setLossCount(1);
+
+            winner.setPointsScored(playerTwoScoreNumber);
+            loser.setPointsScored(playerOneScoreNumber);
+
+            winner.setPointsConceded(playerOneScoreNumber);
+            loser.setPointsConceded(playerTwoScoreNumber);
+
+            winner.winPercentage();
+            loser.winPercentage();
+
+            winner.update(dbHelper);
+            loser.update(dbHelper);
+
+
             Intent i = new Intent(this, GameOverActivity.class);
             i.putExtra("winName", getIntent().getStringExtra("playerTwoName"));
             i.putExtra("lossName", getIntent().getStringExtra("playerOneName"));

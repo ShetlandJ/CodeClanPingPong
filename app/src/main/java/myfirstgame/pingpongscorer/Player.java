@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import static myfirstgame.pingpongscorer.DBHelper.PLAYER_COLUMN_ID;
 import static myfirstgame.pingpongscorer.DBHelper.PLAYER_COLUMN_LOSSES;
@@ -72,11 +74,30 @@ public class Player {
         return pointsScored - pointsConceded;
     }
 
-    public int progressByPercentage(){
-        double calc = (winCount * 100) / (winCount + lossCount);
-        double percentage = calc;
-        int myInt = (int) (percentage * 1);
-        return myInt;
+    public void setWinCount(Integer winCount) {
+        this.winCount += winCount;
+    }
+
+    public void setLossCount(Integer lossCount) {
+        this.lossCount += lossCount;
+    }
+
+    public void setPointsScored(Integer pointsScored) {
+        this.pointsScored += pointsScored;
+    }
+
+    public void setPointsConceded(Integer pointsConceded) {
+        this.pointsConceded += pointsConceded;
+    }
+
+    public Integer winPercentage(){
+        if (winCount > 0 && lossCount > 0) {
+            double calc = (winCount * 100) / (winCount + lossCount);
+            double percentage = calc;
+            int myInt = (int) (percentage * 1);
+            return myInt;
+        }
+        return 0;
     }
 
     public static Player load(DBHelper dbHelper, String name){
@@ -128,10 +149,26 @@ public class Player {
 
             Player player = new Player(id, name, winCount, lossCount, pointsScored, pointsConceded);
             players.add(player);
+
         }
         cursor.close();
+        Collections.sort(players, Player.getComparatorByPercentage());
+        Collections.sort(players, Collections.reverseOrder(Player.getComparatorByPercentage()));
         return players;
     }
+
+    public static Comparator<Player> getComparatorByPercentage()
+    {
+        Comparator comp = new Comparator<Player>(){
+            @Override
+            public int compare(Player p1, Player p2)
+            {
+                return Integer.valueOf(p1.winPercentage()).compareTo(p2.winPercentage());
+            }
+        };
+        return comp;
+    }
+
 
     public static boolean deleteAll(DBHelper dbHelper){
         SQLiteDatabase db = dbHelper.getWritableDatabase();

@@ -13,11 +13,6 @@
             android:name=".PlayerListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".AddPlayerActivity"
@@ -26,7 +21,15 @@
         <activity android:name=".GameActivity" />
         <activity android:name=".GameOverActivity" />
         <activity android:name=".AndroidDatabaseManager" />
-        <activity android:name=".StatisticsActivity"></activity>
+        <activity android:name=".StatisticsActivity" />
+        <activity android:name=".HomePageActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>
