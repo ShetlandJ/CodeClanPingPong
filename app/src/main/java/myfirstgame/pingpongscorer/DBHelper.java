@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "test7.db";
+    public static final String DATABASE_NAME = "test8.db";
 
     //    Players table
     public static final String PLAYER_TABLE_NAME = "players";

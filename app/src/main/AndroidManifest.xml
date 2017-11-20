@@ -22,7 +22,9 @@
         <activity android:name=".GameOverActivity" />
         <activity android:name=".AndroidDatabaseManager" />
         <activity android:name=".StatisticsActivity" />
-        <activity android:name=".HomePageActivity">
+        <activity android:name=".HomePageActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

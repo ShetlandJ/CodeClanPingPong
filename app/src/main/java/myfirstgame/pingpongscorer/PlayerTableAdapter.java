@@ -41,9 +41,7 @@ public class PlayerTableAdapter extends ArrayAdapter<Player> {
         pointsConceded.setText(currentPlayer.getPointsConceded().toString());
 
         TextView winPercentage = listItemView.findViewById(R.id.winPercentage);
-        winPercentage.setText(currentPlayer.winPercentage().toString());
-
-
+        winPercentage.setText(currentPlayer.winPercentage().toString() + "%");
 
         listItemView.setTag(currentPlayer);
 
