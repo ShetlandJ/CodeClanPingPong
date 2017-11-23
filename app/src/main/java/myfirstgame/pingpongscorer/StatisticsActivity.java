@@ -1,7 +1,10 @@
 package myfirstgame.pingpongscorer;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -20,5 +23,12 @@ public class StatisticsActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.premierLeague);
         listView.setAdapter(questAdapter);
 
+    }
+
+    public void goHome(View button) {
+        FloatingActionButton fab = findViewById(R.id.goHome);
+
+        Intent i = new Intent(this, HomePageActivity.class);
+        startActivity(i);
     }
 }

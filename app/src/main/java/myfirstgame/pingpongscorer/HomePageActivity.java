@@ -1,7 +1,6 @@
 package myfirstgame.pingpongscorer;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +20,7 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     public void onPlayGameButtonClicked(View button) {
-        playGame = findViewById(R.id.playGameBtn);
+        playGame = findViewById(R.id.addGame);
 
         Intent i = new Intent(this, PlayerListActivity.class);
         startActivity(i);
@@ -35,11 +34,11 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
 
-//    public void onAddGameButtonClicked(View button) {
-//        addGame = findViewById(R.id.addGameBtn);
-//
-//        Intent i = new Intent(this, AddGameActivity.class);
-//        startActivity(i);
-//    }
+    public void addGame(View button) {
+        addGame = findViewById(R.id.addGameBtn);
+
+        Intent i = new Intent(this, AddGameActivity.class);
+        startActivity(i);
+    }
 
 }

@@ -12,17 +12,25 @@
         <activity
             android:name=".PlayerListActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".AddPlayerActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
-        <activity android:name=".GameActivity" />
-        <activity android:name=".GameOverActivity" />
-        <activity android:name=".AndroidDatabaseManager" />
-        <activity android:name=".StatisticsActivity" />
-        <activity android:name=".HomePageActivity"
+        <activity android:name=".GameActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".GameOverActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".AndroidDatabaseManager"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".StatisticsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".HomePageActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -30,8 +38,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".AddGameActivity"></activity>
     </application>
 
 </manifest>

@@ -4,43 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="myfirstgame.pingpongscorer.HomePageActivity">
+    tools:context="myfirstgame.pingpongscorer.HomePageActivity"
+    android:background="@color/colorPrimaryDark"
+    >
 
     <Button
-        android:id="@+id/playGameBtn"
+        android:id="@+id/addGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="224dp"
+        android:background="@drawable/custom_button_style"
         android:onClick="onPlayGameButtonClicked"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:text="Play Game"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/leagueTableBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="227dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="224dp"
+        android:background="@drawable/custom_button_style"
         android:onClick="onLeagueTableButtonClicked"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:text="League Table"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/addGameBtn"
-        app:layout_constraintHorizontal_bias="0.413"
-        app:layout_constraintStart_toEndOf="@+id/playGameBtn"
+        app:layout_constraintStart_toEndOf="@+id/addGame"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/addGameBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="224dp"
+        android:background="@drawable/custom_button_style"
+        android:onClick="addGame"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:text="Add Game"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="385dp"
+        android:layout_height="108dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="24dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/codeclanlogo" />
+
 </android.support.constraint.ConstraintLayout>

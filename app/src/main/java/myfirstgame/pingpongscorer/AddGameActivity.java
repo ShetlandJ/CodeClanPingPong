@@ -1,29 +1,32 @@
 package myfirstgame.pingpongscorer;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-public class PlayerListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class AddGameActivity extends AppCompatActivity {
 
     Spinner playerOneSpinner;
     Spinner playerTwoSpinner;
 
+    EditText playerOneScore;
+    EditText playerTwoScore;
+
+    Button addGameBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_list);
-
-
+        setContentView(R.layout.activity_add_game);
 
         DBHelper dbHelper = new DBHelper(this);
         ArrayList<Player> playerList = Player.all(dbHelper);
@@ -32,9 +35,14 @@ public class PlayerListActivity extends AppCompatActivity implements AdapterView
             playerNames.add(player.getName());
         }
 
-        playerOneSpinner = findViewById(R.id.player2Spinner);
+        playerOneScore = findViewById(R.id.playerOneScore);
+        playerTwoScore = findViewById(R.id.playerTwoScore);
 
-        ArrayAdapter<String> playerOneSpinnerAdapter = new ArrayAdapter<>(PlayerListActivity.this, R.layout.player_spinner, playerNames);
+        addGameBtn = findViewById(R.id.addGame);
+
+        playerOneSpinner = findViewById(R.id.player1Spinner);
+
+        ArrayAdapter<String> playerOneSpinnerAdapter = new ArrayAdapter<>(AddGameActivity.this, R.layout.player_spinner, playerNames);
         playerOneSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         playerOneSpinner.setAdapter(playerOneSpinnerAdapter);
         playerOneSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -55,9 +63,9 @@ public class PlayerListActivity extends AppCompatActivity implements AdapterView
             player2Names.add(player.getName());
         }
 
-        playerTwoSpinner = findViewById(R.id.player1Spinner);
+        playerTwoSpinner = findViewById(R.id.player2Spinner);
 
-        ArrayAdapter<String> playerTwoSpinnerAdapter = new ArrayAdapter<>(PlayerListActivity.this, R.layout.player_spinner, player2Names);
+        ArrayAdapter<String> playerTwoSpinnerAdapter = new ArrayAdapter<>(AddGameActivity.this, R.layout.player_spinner, player2Names);
         playerTwoSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         playerTwoSpinner.setAdapter(playerTwoSpinnerAdapter);
         playerTwoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -71,45 +79,31 @@ public class PlayerListActivity extends AppCompatActivity implements AdapterView
             }
         });
 
-
         playerOneSpinner.setOnItemSelectedListener(new MySpinnerSelectedListener());
         playerTwoSpinner.setOnItemSelectedListener(new MySpinnerSelectedListener());
-
-
-
     }
 
+    public void addGameToDb(View button){
+        DBHelper dbHelper = new DBHelper(this);
+        String playerOneName = playerOneSpinner.getSelectedItem().toString();
+        String playerTwoName = playerTwoSpinner.getSelectedItem().toString();
+
+        Player playerOne = Player.load(dbHelper, playerOneName);
+        Player playerTwo = Player.load(dbHelper, playerTwoName);
+
+        Integer playerOneId = playerOne.getId();
+        Integer playerTwoId = playerTwo.getId();
 
 
-    public void onAddButtonClicked(View button) {
-        FloatingActionButton fab = findViewById(R.id.addPlayer);
+        Integer p1Score = Integer.parseInt(playerOneScore.getText().toString());
+        Integer p2Score = Integer.parseInt(playerTwoScore.getText().toString());
 
-        Intent i = new Intent(this, AddPlayerActivity.class);
-        startActivity(i);
-    }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Game game = new Game(playerOneId, playerTwoId, p1Score, p2Score);
+        game.save(dbHelper);
 
-    }
-
-    public void playerGame(View button) {
-
-        String playerOne = playerOneSpinner.getSelectedItem().toString();
-        String playerTwo = playerTwoSpinner.getSelectedItem().toString();
-
-        if (!playerOne.equals(playerTwo)) {
-
-            Intent intent = new Intent(this, GameActivity.class);
-            intent.putExtra("playerOneName", playerOne.toString());
-            intent.putExtra("playerTwoName", playerTwo.toString());
-
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, "You can't play against yourself, man!", Toast.LENGTH_SHORT).show();
-        }
+        Intent intent = new Intent(this, HomePageActivity.class);
+        startActivity(intent);
     }
 
 }
-
-

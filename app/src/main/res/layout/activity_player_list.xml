@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="myfirstgame.pingpongscorer.PlayerListActivity">
+    tools:context="myfirstgame.pingpongscorer.PlayerListActivity"
+    android:background="@color/colorPrimaryDark"
+    >
 
     <Spinner
-        android:id="@+id/playerTwoSpinner"
+        android:id="@+id/player1Spinner"
         android:layout_width="328dp"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
+        android:background="@color/paleBlue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.201"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,37 +31,34 @@
         android:onClick="onAddButtonClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@drawable/adduserbutton" />
 
     <Spinner
-        android:id="@+id/playerOneSpinner"
+        android:id="@+id/player2Spinner"
         android:layout_width="328dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:background="@color/paleBlue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.201"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/versus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="180dp"
         android:layout_marginTop="8dp"
-        android:text="VERSUS"
+        android:text="VS"
         android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/playerOneSpinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerTwoSpinner"
-        app:layout_constraintVertical_bias="0.508"
-        tools:text="versus" />
+        app:layout_constraintBottom_toTopOf="@+id/player2Spinner"
+        app:layout_constraintEnd_toStartOf="@+id/playButton"
+        app:layout_constraintTop_toBottomOf="@+id/player1Spinner"
+        app:layout_constraintVertical_bias="0.531" />
 
     <Button
         android:id="@+id/playButton"
@@ -68,24 +68,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/custom_button_style"
         android:onClick="playerGame"
         android:text="PLAY!"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/player2Spinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.873"
+        app:layout_constraintHorizontal_bias="0.853"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerTwoSpinner"
-        app:layout_constraintVertical_bias="0.248" />
-
-    <Button
-        android:id="@+id/dbBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:text="dB"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/player1Spinner" />
 
 </android.support.constraint.ConstraintLayout>
