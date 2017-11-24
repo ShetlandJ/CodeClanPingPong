@@ -17,6 +17,16 @@ public class HomePageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
 
+        Button button = findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent dbmanager = new Intent(v.getContext(), AndroidDatabaseManager.class);
+                startActivity(dbmanager);
+            }
+        });
+
     }
 
     public void onPlayGameButtonClicked(View button) {

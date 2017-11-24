@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import static myfirstgame.pingpongscorer.DBHelper.GAME_TABLE_NAME;
 import static myfirstgame.pingpongscorer.DBHelper.PLAYER_COLUMN_ID;
 import static myfirstgame.pingpongscorer.DBHelper.PLAYER_COLUMN_LOSSES;
 import static myfirstgame.pingpongscorer.DBHelper.PLAYER_COLUMN_NAME;
@@ -96,9 +97,15 @@ public class Player {
             double percentage = calc;
             int myInt = (int) (percentage * 1);
             return myInt;
+        } else if (winCount > 0 && lossCount == 0) {
+            double calc = (winCount * 100) / (winCount + lossCount);
+            double percentage = calc;
+            int myInt = (int) (percentage * 1);
+            return myInt;
         }
         return 0;
     }
+
 
     public static Player load(DBHelper dbHelper, String name){
         SQLiteDatabase db = dbHelper.getReadableDatabase();

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "test8.db";
+    public static final String DATABASE_NAME = "test12.db";
 
     //    Players table
     public static final String PLAYER_TABLE_NAME = "players";
@@ -34,6 +34,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String GAME_COLUMN_PLAYER_TWO = "player_two_id";
     public static final String GAME_COLUMN_PLAYER_ONE_SCORE = "player_one_score";
     public static final String GAME_COLUMN_PLAYER_TWO_SCORE = "player_two_score";
+    public static final String GAME_COLUMN_WINNER = "game_winner";
+    public static final String GAME_COLUMN_LOSER = "game_loser";
+
 
 
     public DBHelper(Context context){
@@ -50,7 +53,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 + GAME_COLUMN_PLAYER_ONE + " INTEGER REFERENCES " + PLAYER_TABLE_NAME + "(" + PLAYER_COLUMN_ID + ") ON DELETE CASCADE, "
                 + GAME_COLUMN_PLAYER_TWO + " INTEGER REFERENCES " + PLAYER_TABLE_NAME + "(" + PLAYER_COLUMN_ID + ") ON DELETE CASCADE, "
                 + GAME_COLUMN_PLAYER_ONE_SCORE + " INTEGER, "
-                + GAME_COLUMN_PLAYER_TWO_SCORE + " INTEGER);");
+                + GAME_COLUMN_PLAYER_TWO_SCORE + " INTEGER, "
+                + GAME_COLUMN_WINNER + " INTEGER REFERENCES " + PLAYER_TABLE_NAME + "(" + PLAYER_COLUMN_ID + ") ON DELETE CASCADE, "
+                + GAME_COLUMN_LOSER + " INTEGER REFERENCES " + PLAYER_TABLE_NAME + "(" + PLAYER_COLUMN_ID + ") ON DELETE CASCADE);");
 
         db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('James S', 0, 0, 0, 0 );");
         db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('Peter M', 0, 0, 0, 0 );");

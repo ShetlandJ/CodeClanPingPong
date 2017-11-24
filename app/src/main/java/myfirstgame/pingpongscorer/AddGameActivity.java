@@ -94,12 +94,21 @@ public class AddGameActivity extends AppCompatActivity {
         Integer playerOneId = playerOne.getId();
         Integer playerTwoId = playerTwo.getId();
 
-
         Integer p1Score = Integer.parseInt(playerOneScore.getText().toString());
         Integer p2Score = Integer.parseInt(playerTwoScore.getText().toString());
 
+        Integer winner;
+        Integer loser;
 
-        Game game = new Game(playerOneId, playerTwoId, p1Score, p2Score);
+        if (p1Score > p2Score) {
+            winner = playerOneId;
+            loser = playerTwoId;
+        } else {
+            winner = playerTwoId;
+            loser = playerOneId;
+        }
+
+        Game game = new Game(playerOneId, playerTwoId, p1Score, p2Score, winner, loser);
         game.save(dbHelper);
 
         Intent intent = new Intent(this, HomePageActivity.class);
