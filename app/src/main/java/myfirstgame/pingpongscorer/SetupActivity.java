@@ -20,8 +20,5 @@ public class SetupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setup);
 
         button = findViewById(R.id.addPlayer);
-
     }
-
-
 }

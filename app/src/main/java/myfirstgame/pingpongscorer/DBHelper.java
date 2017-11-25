@@ -62,8 +62,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('Jamie K', 0, 0, 0, 0 );");
         db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('Chad T', 0, 0, 0, 0 );");
         db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('Alistair K', 0, 0, 0, 0 );");
-
-
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){

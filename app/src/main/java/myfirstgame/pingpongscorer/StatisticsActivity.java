@@ -22,7 +22,6 @@ public class StatisticsActivity extends AppCompatActivity {
         PlayerTableAdapter questAdapter = new PlayerTableAdapter(this, playerList);
         ListView listView = findViewById(R.id.premierLeague);
         listView.setAdapter(questAdapter);
-
     }
 
     public void goHome(View button) {

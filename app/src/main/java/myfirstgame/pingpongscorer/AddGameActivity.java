@@ -114,5 +114,4 @@ public class AddGameActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HomePageActivity.class);
         startActivity(intent);
     }
-
 }

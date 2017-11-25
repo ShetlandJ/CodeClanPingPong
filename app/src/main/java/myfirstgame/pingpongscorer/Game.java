@@ -1,7 +1,6 @@
 package myfirstgame.pingpongscorer;
 
 import android.content.ContentValues;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import static myfirstgame.pingpongscorer.DBHelper.GAME_COLUMN_LOSER;

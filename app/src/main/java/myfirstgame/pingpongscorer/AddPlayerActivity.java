@@ -31,5 +31,4 @@ public class AddPlayerActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PlayerListActivity.class);
         startActivity(intent);
     }
-
 }

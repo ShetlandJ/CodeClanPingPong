@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import static myfirstgame.pingpongscorer.DBHelper.GAME_TABLE_NAME;
 
@@ -210,6 +209,5 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         cursor.close();
         return total;
     }
-
 }
 

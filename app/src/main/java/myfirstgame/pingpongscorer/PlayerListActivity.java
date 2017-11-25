@@ -17,13 +17,10 @@ public class PlayerListActivity extends AppCompatActivity implements AdapterView
     Spinner playerOneSpinner;
     Spinner playerTwoSpinner;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_list);
-
-
 
         DBHelper dbHelper = new DBHelper(this);
         ArrayList<Player> playerList = Player.all(dbHelper);
@@ -71,15 +68,10 @@ public class PlayerListActivity extends AppCompatActivity implements AdapterView
             }
         });
 
-
         playerOneSpinner.setOnItemSelectedListener(new MySpinnerSelectedListener());
         playerTwoSpinner.setOnItemSelectedListener(new MySpinnerSelectedListener());
 
-
-
     }
-
-
 
     public void onAddButtonClicked(View button) {
         FloatingActionButton fab = findViewById(R.id.addPlayer);
@@ -99,7 +91,6 @@ public class PlayerListActivity extends AppCompatActivity implements AdapterView
         String playerTwo = playerTwoSpinner.getSelectedItem().toString();
 
         if (!playerOne.equals(playerTwo)) {
-
             Intent intent = new Intent(this, GameActivity.class);
             intent.putExtra("playerOneName", playerOne.toString());
             intent.putExtra("playerTwoName", playerTwo.toString());

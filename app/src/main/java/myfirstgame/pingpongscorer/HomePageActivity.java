@@ -26,7 +26,6 @@ public class HomePageActivity extends AppCompatActivity {
                 startActivity(dbmanager);
             }
         });
-
     }
 
     public void onPlayGameButtonClicked(View button) {
@@ -43,12 +42,10 @@ public class HomePageActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-
     public void addGame(View button) {
         addGame = findViewById(R.id.addGameBtn);
 
         Intent i = new Intent(this, AddGameActivity.class);
         startActivity(i);
     }
-
 }
