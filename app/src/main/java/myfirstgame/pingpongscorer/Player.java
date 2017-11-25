@@ -97,7 +97,7 @@ public class Player {
             double percentage = calc;
             int myInt = (int) (percentage * 1);
             return myInt;
-        } else if (winCount > 0 && lossCount == 0) {
+        } else if (winCount > 2 && lossCount == 0) {
             double calc = (winCount * 100) / (winCount + lossCount);
             double percentage = calc;
             int myInt = (int) (percentage * 1);
