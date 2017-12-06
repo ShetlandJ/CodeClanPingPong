@@ -8,6 +8,7 @@ The app is a work in progress, but at the moment it does what it needs to do: Le
 # Screenshots
  
 <img src="https://github.com/ShetlandJ/TableTennisScorer/blob/master/tt1.png" alt="Table Tennis score homepage" width="450" />
-<img src="https://github.com/ShetlandJ/TableTennisScorer/blob/master/tts1.png" alt="Table Tennis game screen" width="450" />
-<img src="https://github.com/ShetlandJ/TableTennisScorer/blob/master/tts2.png" alt="Table Tennis league table" width="450" />
+<img src="https://github.com/ShetlandJ/TableTennisScorer/blob/master/tts2.png" alt="Table Tennis game screen" width="450" />
+Numbers at the bottom of the game is the head-to-head record of the players.
+<img src="https://github.com/ShetlandJ/TableTennisScorer/blob/master/tts1.png" alt="Table Tennis league table" width="450" />
 
