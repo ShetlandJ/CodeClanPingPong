@@ -57,11 +57,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 + GAME_COLUMN_WINNER + " INTEGER REFERENCES " + PLAYER_TABLE_NAME + "(" + PLAYER_COLUMN_ID + ") ON DELETE CASCADE, "
                 + GAME_COLUMN_LOSER + " INTEGER REFERENCES " + PLAYER_TABLE_NAME + "(" + PLAYER_COLUMN_ID + ") ON DELETE CASCADE);");
 
-        db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('James S', 0, 0, 0, 0 );");
-        db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('Peter M', 0, 0, 0, 0 );");
-        db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('Jamie K', 0, 0, 0, 0 );");
-        db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('Chad T', 0, 0, 0, 0 );");
-        db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('Alistair K', 0, 0, 0, 0 );");
+//        Here's what a player-insert looks like, if you'd like to create a whole bunch of pre-loaded players!
+//        db.execSQL("INSERT INTO " + PLAYER_TABLE_NAME + "('name', 'wins', 'losses', 'points_scored', 'points_conceded') VALUES ('James S', 0, 0, 0, 0 );");
+
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
